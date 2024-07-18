@@ -1,3 +1,4 @@
+using System.ComponentModel;
 using System.Linq;
 using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
@@ -40,6 +41,14 @@ namespace Todo.Tests
         public void EqualImportance()
         {
             Assert.Equal(srcTodoItem.Importance, resultFields.Importance);
+        }
+
+        [Fact]
+        public void ResponsiblePartyId_HasDisplayName()
+        {
+            var propertyInfo = typeof(TodoItemCreateFields).GetProperty(nameof(TodoItemCreateFields.ResponsiblePartyId));
+            propertyInfo.Should().BeDecoratedWith<DisplayNameAttribute>();
+
         }
     }
 }
