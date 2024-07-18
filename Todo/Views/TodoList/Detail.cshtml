@@ -19,7 +19,7 @@
             </a>
         </li>
 
-        @foreach (var item in Model.Items.OrderBy(x => x.Importance))
+        @foreach (var item in Model.Items.Where(i => !i.IsDone).OrderBy(i => i.Importance))
         {
             string contextualClass;
             switch (item.Importance)
