@@ -7,7 +7,7 @@ namespace Todo.EntityModelMappers.TodoItems
     {
         public static TodoItemCreateFields Create(TodoList todoList, string defaultResponsibleUserId)
         {
-            return new TodoItemCreateFields(todoList.TodoListId, todoList.Title, defaultResponsibleUserId);
+            return new TodoItemCreateFields(todoList.TodoListId, todoList.Title, defaultResponsibleUserId, 0);
         }
     }
 }

@@ -51,3 +51,9 @@ My approach for this was to first get the request working in postman, this way I
 Once this was working I plugged it into the front end and it worked. Again typically I would test this but it would be extra time I don't want to spend.  
 
 I put in a check to handle the 429 response code so that if we do hit the rate limit it doesn't throw errors and fails gracefully, the code is async so shouldn't lock the front end up. Although I'm unsure how this works in Razor but that's why you'd use it in MVVM
+
+# Task 9
+This was tricky due to a lack of razor knowledge, I tried lifting the logic from the TodoItem Create.cshtml and putting it in the Detail.cshtml, then only displaying it when the button was clicked but it didn't look great and the code was messy.  
+After some googling I decided to try a modal which was tricky but seemed to work with random fields, I then tried plugging in the actual variables and it seemed to get passed to the controller. I'm unsure if what I've done is bad practice or not.  
+
+I also spotted that the create never allowed you to set the rank, and that the input allowed for negative numbers so I tidied that up.
