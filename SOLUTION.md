@@ -33,3 +33,12 @@ My concern with this and the changes from task 2 is that without the unit tests 
 For this I added a new test then updated the TestTodoListBuilder to be able to take a userId to set the responsibleUserId on the list item, this was nullable so existing tests would function without changes.  
 
 From here I then ran the test so it failed and then updated the code so that it also checked for lists that had items with the passed in userId.
+
+# Task 7
+My first thought from reading this is that is the rank unique or can two items share the same rank, since no constraint is defined I'll carry on with the assumption two items can have the same rank, this is just for ease and not to overcomplicate things for now.  
+
+Being completely honest this was tricky due to not knowing razor so there was a lot of googling but in the end I had the razor page pass a param to the controller and do the filtering on there. Typically I wouldn't do any logic in a controller and I'd instead call a service with the logic in, better i'd pass the filter to the service and the service would do the correct db call.
+
+Typically I would add tests to cover the logic in the controller but I don't have the time at the moment.
+
+# Task 8

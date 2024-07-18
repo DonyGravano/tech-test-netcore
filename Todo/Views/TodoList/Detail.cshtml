@@ -4,12 +4,24 @@
 @model Todo.Models.TodoLists.TodoListDetailViewmodel
 
 @{
-    ViewData["Title"] = $"List: {Model.Title}";
+    ViewData["Title"] = $"List: {Model.Title}"; 
+    var sortOrder = Context.Request.Query["sortOrder"].ToString() ?? "importance";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <div class="col-md-6">
+    
+    <form method="get" asp-action="Detail" asp-controller="TodoList" class="form-inline mb-3">
+        <div class="form-group">
+            <label for="sortOrder" class="mr-2">Sort By:</label>
+            <select id="sortOrder" name="sortOrder" class="form-control" onchange="this.form.submit()">
+                <!option value="importance" @(sortOrder == "importance" ? "selected" : "")>Importance</!option>
+                <!option value="rank" @(sortOrder == "rank" ? "selected" : "")>Rank</!option>
+            </select>
+        </div>
+        <input type="hidden" name="todoListId" value="@Model.TodoListId" />
+    </form>
 
     <ul class="list-group">
 
@@ -19,7 +31,10 @@
             </a>
         </li>
 
-        @foreach (var item in Model.Items.Where(i => !i.IsDone).OrderBy(i => i.Importance))
+        @foreach (var item in Model.Items
+            .Where(i => !i.IsDone)
+            .OrderBy(i => sortOrder == "rank" ? i.Rank : (int?)null)
+            .ThenBy(i => sortOrder == "importance" ? i.Importance : (Importance?)null))
         {
             string contextualClass;
             switch (item.Importance)

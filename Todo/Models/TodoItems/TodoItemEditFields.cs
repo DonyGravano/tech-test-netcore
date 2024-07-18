@@ -14,7 +14,7 @@ namespace Todo.Models.TodoItems
         [DisplayName("Responsible User")]
         public string ResponsiblePartyId { get; set; }
         public Importance Importance { get; set; }
-
+        public int Rank { get; set; }
         public TodoItemEditFields() { }
 
         public TodoItemEditFields(int todoListId, string todoListTitle, int todoItemId, string title, bool isDone, string responsiblePartyId, Importance importance)

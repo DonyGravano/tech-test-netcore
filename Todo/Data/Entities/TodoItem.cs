@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore.Metadata.Conventions;
 
 namespace Todo.Data.Entities {
     public class TodoItem
@@ -12,6 +13,8 @@ namespace Todo.Data.Entities {
 
         public int TodoListId { get; set; }
         public TodoList TodoList { get; set; }
+
+        public int Rank { get; set; }
 
         protected TodoItem() { }
 
