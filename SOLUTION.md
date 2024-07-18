@@ -42,3 +42,12 @@ Being completely honest this was tricky due to not knowing razor so there was a 
 Typically I would add tests to cover the logic in the controller but I don't have the time at the moment.
 
 # Task 8
+First I looked into the gravatar api docs found here: https://docs.gravatar.com/api/profiles/rest-api/  
+They recommended to use an API key which I looked at creating but I had to provide an organisation name and website which I was unsure what to use so I haven't used an API Key.  
+This comes with the caveat of only being able to use 100 requests per hour, when doing this in an organisation I would get an api key
+
+My approach for this was to first get the request working in postman, this way I could get it working easily and look at the model. From here I created a model, new configuration/options and a new service for the gravatar logic that was non static.  
+
+Once this was working I plugged it into the front end and it worked. Again typically I would test this but it would be extra time I don't want to spend.  
+
+I put in a check to handle the 429 response code so that if we do hit the rate limit it doesn't throw errors and fails gracefully, the code is async so shouldn't lock the front end up. Although I'm unsure how this works in Razor but that's why you'd use it in MVVM

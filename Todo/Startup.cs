@@ -8,6 +8,9 @@ using Todo.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Todo.Services;
+using System;
+using Todo.Models.Gravatar;
 
 namespace Todo
 {
@@ -36,6 +39,10 @@ namespace Todo
 
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.Configure<GravatarOptions>(Configuration.GetSection(nameof(GravatarOptions)));
+
+            services.AddHttpClient<IGravatarService, GravatarService>();
 
             services.AddControllers();
 
