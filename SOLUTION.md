@@ -68,5 +68,7 @@ The way I've currently implemented the rank ordering it does filter the page, so
 Below is a list of things I'd like to sort/improve with the task if I had more time:
 -	Create an api key for gravatar service so we're less likely to hit the request limit
 -	Add more unit tests for all the service but primarily for the ones I've created, currently test coverage is at a whopping 10%. Coverage can be false confidence but just having the regression suite there would be useful
+	- This would be tricky with the static files so I'd look to create more interfaces and dependency inject things in so they could be mocked or substituted
+	- Typically I like to use a combination of fluent assetions, moq/nsubstitute and auto fixture for my testing, this may be something I get around to doing at somepoint. 
 -   Personally I dislike any logic within the front, unless it's simple logic like hiding something based on a bool, so I'd like to change any ordering/filtering done in the front end back into the back end
-- 
+-	 
