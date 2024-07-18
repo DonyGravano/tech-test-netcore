@@ -1,4 +1,5 @@
 using System.Linq;
+using FluentAssertions;
 using Microsoft.AspNetCore.Identity;
 using Todo.Data.Entities;
 using Todo.EntityModelMappers.TodoItems;
@@ -15,9 +16,8 @@ namespace Todo.Tests
         public WhenTodoItemIsConvertedToEditFields()
         {
             var todoList = new TestTodoListBuilder(new IdentityUser("alice@example.com"), "shopping")
-                    .WithItem("bread", Importance.High)
-                    .Build()
-                ;
+                .WithItem("bread", Importance.High)
+                .Build();
 
             srcTodoItem = todoList.Items.First();
 
