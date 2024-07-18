@@ -11,7 +11,7 @@ namespace Todo.Services
         {
             var todoLists = dbContext.TodoLists.Include(tl => tl.Owner)
                 .Include(tl => tl.Items)
-                .Where(tl => tl.Owner.Id == userId)
+                .Where(tl => tl.Owner.Id == userId || tl.Items.Any(i => i.ResponsiblePartyId == userId))
                 .ToList();
 
             todoLists.ForEach(todoList => { todoList.Items = todoList.Items.OrderBy(i => i.Importance).ToList(); });

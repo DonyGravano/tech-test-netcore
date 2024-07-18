@@ -28,3 +28,8 @@ Ideally I'd like this done in the backend with an extra endpoint that only retur
 
 My concern with this and the changes from task 2 is that without the unit tests they could regress to how it previously was and it wouldn't be picked up very quickly.
 
+# Task 6
+
+For this I added a new test then updated the TestTodoListBuilder to be able to take a userId to set the responsibleUserId on the list item, this was nullable so existing tests would function without changes.  
+
+From here I then ran the test so it failed and then updated the code so that it also checked for lists that had items with the passed in userId.
