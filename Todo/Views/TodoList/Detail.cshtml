@@ -10,23 +10,21 @@
 
 @{
     ViewData["Title"] = $"List: {Model.Title}"; 
-    var sortOrder = Context.Request.Query["sortOrder"].ToString() ?? "importance";
+    var sortOrder = "importance";
 }
 
 <h2>@ViewData["Title"]</h2>
 
 <div class="col-md-6">
     
-    <form method="get" asp-action="Detail" asp-controller="TodoList" class="form-inline mb-3">
         <div class="form-group">
             <label for="sortOrder" class="mr-2">Sort By:</label>
             <select id="sortOrder" name="sortOrder" class="form-control" onchange="this.form.submit()">
-                <!option value="importance" @(sortOrder == "importance" ? "selected" : "")>Importance</!option>
-                <!option value="rank" @(sortOrder == "rank" ? "selected" : "")>Rank</!option>
+                <!option value="importance" @(sortOrder = "importance")>Importance</!option>
+                <!option value="rank" @(sortOrder = "rank")>Rank</!option>
             </select>
         </div>
         <input type="hidden" name="todoListId" value="@Model.TodoListId" />
-    </form>
 
     <ul class="list-group">
 
